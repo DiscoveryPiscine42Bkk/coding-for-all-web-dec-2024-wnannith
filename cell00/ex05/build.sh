@@ -3,6 +3,6 @@ if [ $# -eq 0 ]; then
 	exit 1
 else
 	for i in $@; do
-		mkdir ex"$i"
+		mkdir "ex$i"
 	done
 fi
