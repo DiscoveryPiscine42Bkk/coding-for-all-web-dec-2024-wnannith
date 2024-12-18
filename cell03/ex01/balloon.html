@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Balloon</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+    <body>
+        <div id="balloon" onclick="balloonGrow();" onmouseleave="balloonShrink();">
+        </div>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0;
+                padding: 0;
+                height: 100vh;
+            }
+            #balloon {
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                background-color: red;
+            }
+        </style>
+        <script>
+            let count = 9999;
+            let element = document.getElementById("balloon");
+            let currSize = 200;
+
+            const minSize = 200;
+            const maxSize = 420;
+            const growSize = 10;
+            const shrinkSize = 5;
+
+            function updateSize() {
+                element.style.width = currSize + "px";
+                element.style.height = currSize + "px";
+            }
+
+            function changeColor() {
+                switch (count % 3){
+                    default:
+                        element.style.backgroundColor = "red";
+                        break;
+                    case 1:
+                        element.style.backgroundColor = "green";
+                        break;
+                    case 2:
+                        element.style.backgroundColor = "blue";
+                        break;
+                }
+            }
+
+            function balloonGrow() {
+                count ++;
+                if (currSize < maxSize) {
+                    currSize += growSize;
+                } else {
+                    currSize = minSize;
+                }
+                updateSize();
+                changeColor();
+            }
+
+            function balloonShrink() {
+                count --;
+                if (currSize > minSize) {
+                    currSize -= shrinkSize;
+                }
+                updateSize();
+                changeColor();
+            }
+        </script>
+    </body>
+</html>
