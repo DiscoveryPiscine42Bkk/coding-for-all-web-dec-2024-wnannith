@@ -4,9 +4,12 @@
     <title>Balloon</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- JQuery Here-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
     <body>
-        <div id="balloon" onclick="balloonGrow();" onmouseleave="balloonShrink();">
+        <div id="balloon">
         </div>
         <style>
             body {
@@ -28,6 +31,7 @@
             let count = 9999;
             let element = document.getElementById("balloon");
             let currSize = 200;
+            let currColor = "red";
 
             const minSize = 200;
             const maxSize = 420;
@@ -35,43 +39,43 @@
             const shrinkSize = 5;
 
             function updateSize() {
-                element.style.width = currSize + "px";
-                element.style.height = currSize + "px";
+                return currSize + "px";
             }
 
             function changeColor() {
                 switch (count % 3){
-                    default:
-                        element.style.backgroundColor = "red";
-                        break;
-                    case 1:
-                        element.style.backgroundColor = "green";
-                        break;
-                    case 2:
-                        element.style.backgroundColor = "blue";
-                        break;
+                    default: currColor = "red"; break;
+                    case 1: currColor = "green"; break;
+                    case 2: currColor = "blue"; break;
                 }
             }
 
             function balloonGrow() {
                 count ++;
-                if (currSize < maxSize) {
-                    currSize += growSize;
-                } else {
-                    currSize = minSize;
-                }
-                updateSize();
-                changeColor();
+                if (currSize < maxSize) {currSize += growSize;} 
+                else {currSize = minSize;};
             }
 
             function balloonShrink() {
                 count --;
-                if (currSize > minSize) {
-                    currSize -= shrinkSize;
-                }
-                updateSize();
-                changeColor();
+                if (currSize > minSize) {currSize -= shrinkSize;}
             }
+        </script>
+        <script>
+            $(document).ready(function(){
+                $("#balloon").on({
+                click: function(){
+                    $balloonGrow();
+                    $(this).css({"width": updateSize(), "height": updateSize()});
+                    $(this).css("background-color", currColor);
+                },
+                mouseleave: function(){
+                    $balloonShrink();
+                    $(this).css({"width": updateSize(), "height": updateSize()});
+                    $(this).css("background-color", currColor);
+                }
+                });
+            });
         </script>
     </body>
 </html>

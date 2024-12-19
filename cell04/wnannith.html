@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>wnannith</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+</head>
+<body>
+    <div id="nav-placeholder"></div>
+    <h1>THE air fryer</h1>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color:white; /* Default background */
+            transition: background-color 0.5s ease; /* Smooth transition */
+            animation-name: hallucination;
+        }
+        h1, .nav {
+            text-align: center;
+        }
+    </style>
+    <script>
+        $.get("navigation.html", function(data){
+            $("#nav-placeholder").replaceWith(data);
+        });
+    </script>
+</body>
+</html>
