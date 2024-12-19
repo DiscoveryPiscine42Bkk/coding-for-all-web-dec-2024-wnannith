@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>SUSU Catalog</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
 </head>
 <body>
-    <div id="nav-placeholder"></div>
+    
+    <p>My main page code</p>
+
+    <img src="imgmain.jpg">
+    <p>เป็นเครื่องซีลสูญญากาศที่ได้รับความนิยมสำหรับการใช้งานในบ้านและธุรกิจขนาดเล็ก เนื่องจากคุณภาพและฟังก์ชันการใช้งานที่คุ้มค่า</p>
+    <table>
+        <td> </td>
+    </table>
 
     <script>
         $.get("navigation.html", function(data){
             $("#nav-placeholder").replaceWith(data);
         });
     </script> 
-    <p>My main page code</p>
 </body>
+<footer>
+    <div id="nav-placeholder"></div>
+</footer>
 </html>
