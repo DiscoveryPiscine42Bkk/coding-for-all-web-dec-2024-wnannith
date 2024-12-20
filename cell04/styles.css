@@ -9,29 +9,64 @@
 
 /* Variables */
 :root {
-    --accent-color: #4f3929;
-    --white: #ffffff;
-    --text-color: #ffffff;
+    --base-color: #4f3929;
+    --accent-color: #956855;
     --bg-color: #f9f5f1;
+
+    --text-color-light: #fff;
+    --text-color-dark: #333;
 }
-body {
+
+/* Document Properties*/
+* {
     margin: 0;
-    font-family: Arial, sans-serif; 
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Anakotmai';
+}
+
+
+
+/* Background Image */
+.container {
+    min-height: 120vh;
+    padding-bottom: 50px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.bg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* The actual image which getting pushed down below*/
+.bg::after {
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    filter: brightness(45%);
+    filter: blur(50%);
     background-image: url("img/bgimg.webp");
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
 }
-body::after{
-    filter: brightness(70%);
-}
+
+
 
 /* Navigation Bar */
 .navbar {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--accent-color); /* สีน้ำตาลเข้ม */
+    background-color: var(--base-color); /* สีน้ำตาลเข้ม */
     padding: 10px 0;
     border-radius: 0 0 15px 15px; /* โค้งมน */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -39,7 +74,7 @@ body::after{
 
 /* Navigation Links */
 .navbar a {
-    color: var(--text-color); /* ตัวหนังสือสีขาว */
+    color: var(--text-color-light); /* ตัวหนังสือสีขาว */
     text-decoration: none;
     margin: 0 20px;
     font-size: 18px;
@@ -51,14 +86,50 @@ body::after{
 
 /* Navigation Bar Hover Effect */
 .navbar a:hover {
-    background-color: #956855; /* สีเข้มขึ้นเมื่อ hover */
+    background-color: var(--accent-color); /* สีเข้มขึ้นเมื่อ hover */
 }
+
+
 
 /* Content for individual pages */
 .content {
-    font-family: 'Anakotmai';
     text-align: center;
-    margin: 50px;
-    font-size: 24px;
-    color: #333;
+    margin: 80px;
+    padding: 20px 80px 80px 80px;
+    color: var(--text-color-dark);
+    background-color: var(--bg-color);
+    border-radius: 2vw;
+}
+
+.content p {
+    font-size: 1em;
+}
+
+.content h1 {
+    font-size: 2.3em;
+    margin-bottom: 20px;
+}
+
+.content h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+
+
+/* Footer for every page. */
+footer {
+    width: 100%;
+    height: 5vh;
+    padding-right: 4vw;
+    background-color: var(--base-color);
+    align-content: center;
+    color: var(--text-color-light);
+}
+
+footer p {
+    font-style: italic;
+    font-weight: 300;
+    font-size: 0.8em;
+    float: right;
 }
