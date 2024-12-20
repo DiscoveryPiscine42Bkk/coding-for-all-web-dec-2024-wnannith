@@ -1,28 +1,54 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>About</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="styles.css" rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
-    </head>
-    <body>
-        <h1>About Us</h1>
-        <style>
-            
-            h1, .nav {
-                text-align: center;
-            }
-        </style>
-        <script>
-            $.get("navigation.html", function(data){
-                $("#nav-placeholder").replaceWith(data);
-            });
-        </script>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link href="styles.css" rel="stylesheet">
 
-    <footer>
-        <div id="nav-placeholder"></div>
-    </footer>
+<!-- Styles for elements exclusively on this page -->
+<style>
+
+#content-table {
+    padding: auto;
+    margin: auto;
+}
+#content-table img {
+    width: 40%;
+}
+</style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="home.html">Home</a>
+        <a href="product.html">Product</a>
+        <a href="about.html">About Us</a>
+    </div>
+
+    <!-- Content (Demo สำหรับ Home Page) -->
+    <div class="content">
+        <h1>About Us</h1>
+        <p>This is a demo page. Click on the navigation bar to explore!</p>
+        <table id="content-table">
+            <tr>
+                <td>
+                    <img src="">
+                </td>
+                <td>
+                    <img src="img/profile2.jpg">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p></p>
+                </td>
+                <td>
+                    <p>Waithin Nannithikitja</p>           
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
 </html>
