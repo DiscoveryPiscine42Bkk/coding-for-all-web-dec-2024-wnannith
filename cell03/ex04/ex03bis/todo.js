@@ -41,8 +41,15 @@ $(document).ready(function () {
     function saveToDo() {
         const list = document.querySelectorAll("#ft_list div");
         const toDoArray = [];
+        const exdays = 1; // Expire in 1 day
         list.forEach(item => toDoArray.push(item.textContent));
-        document.cookie = "todo=" + encodeURIComponent(JSON.stringify(toDoArray)) + ";path=/";
+        document.cookie =  + ";path=/";
+
+        // Add expire date (so it does not become a session cookie)
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        let expires = "expires="+d.toUTCString();
+        document.cookie = "todo=" + encodeURIComponent(JSON.stringify(toDoArray)) + ";" + expires + ";path=/";
     }
 
     // Load To-Do List from cookies
