@@ -13,70 +13,72 @@
     <!-- แบบฟอร์มเครื่องคิดเลข -->
     <input type="text" id="leftOperand" placeholder="Left number">
     <select id="operator">
-        <option value="+">+</option>
-        <option value="-">-</option>
-        <option value="*">*</option>
-        <option value="/">/</option>
-        <option value="%">%</option>
+        <option value='+'>+</option>
+        <option value='-'>-</option>
+        <option value='*'>*</option>
+        <option value='/'>/</option>
+        <option value='%'>%</option>
     </select>
     <input type="text" id="rightOperand" placeholder="Right number">
-    <button onclick="calculate()">Try me!</button>
+    <button id="calculateBtn">Try me!</button>
     
-    <script>
-        function isPositiveInteger(value) {
-            return /^\d+$/.test(value); //RegExp for values containing only the digits (no + or -)
-        }
+<script>
+$(document).ready(function() {
 
-        function calculate() {
-            const leftOperand = document.getElementById('leftOperand').value;
-            const rightOperand = document.getElementById('rightOperand').value;
-            const operator = document.getElementById('operator').value;
+    $('#calculateBtn').on('click', function() {
+        const leftOperand = $('#leftOperand').val();
+        const rightOperand = $('#rightOperand').val();
+        const operator = $('#operator').val();
+
+        try {
+            // Check appropriate operands
+            if (!isPositiveInteger(leftOperand) || !isPositiveInteger(rightOperand)) {
+                throw new Error('Invalid Operator');
+            }
 
             const num1 = parseInt(leftOperand);
             const num2 = parseInt(rightOperand);
             let result;
 
-            try {
-                if (!isPositiveInteger(leftOperand) || !isPositiveInteger(rightOperand)) {
-                    throw new Error("Invalid Operand(s)");
-                }
+            // Check zero division
+            if ((operator === '/' || operator === '%') && num2 === 0) {
+                throw new Error('Zero Division');
+            };
 
-                switch (operator) {
-                    case '+':
-                        result = num1 + num2;
-                        break;
-                    case '-':
-                        result = num1 - num2;
-                        break;
-                    case '*':
-                        result = num1 * num2;
-                        break;
-                    case '/': case '%':
-                        if (num2 === 0) {
-                            alert("It's over 9000!");
-                            console.error("It's over 9000!");
-                            return;
-                        }
-                        result = operator === '/' ? num1 / num2 : num1 % num2;
-                        break;
+            // Calculate the result unless unsupported operator
+            switch (operator) {
+                case '+': result = num1 + num2; break;
+                case '-': result = num1 - num2; break;
+                case '*': result = num1 * num2; break;
+                case '/': result = num1 / num2; break;
+                case '%': result = num1 % num2; break;
+                default: throw new Error('Invalid Operator');
+            }
 
-                    default:
-                        throw new Error("Invalid Operator");
-                }
+            alert(`Result: ${result}`);
 
-                alert(`Result: ${result}`);
-                console.log(`Result: ${result}`);
-
-            } catch (e) {
+        } catch(err) {
+            if (err.message === 'Zero Division') {
+                alert("It's over 9000!");
+                console.error("It's over 9000!");
+            } else {
                 alert("Error :(");
                 console.error("Error :(");
             }
         }
+        });
 
-        // Alert every 30 secs.
-        setInterval(
-            () => {alert("Please, use me...");}, 30000
-        );
-    </script>
+    // Return true when only digits are presented (no ., - or +)
+    function isPositiveInteger(value) {
+        return /^\d+$/.test(value);
+    }
+
+    // Alert every 30 secs
+    setInterval(function() {
+        alert("Please, use me...");
+    }, 30000);
+
+});
+</script>
 </body>
 </html>

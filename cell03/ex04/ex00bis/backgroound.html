@@ -4,23 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Background Color</title>
-
     <link rel="stylesheet" href="backgroound.css">
-    <script src="backgroound.js"></script>
 
     <!-- JQuery Here-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
-    <button onclick="changeBackgroundColor()">
-        Change Background Color
-    </button>
-    <script>
-        $(document).ready(function(){
-            $("button").click(function(){
-                $("body").css("background-color", getRandomColor())
-            })
-        });
-    </script>
+    <button id="changeColorButton">Change Background Color</button>
+    <!-- Link to JS file -->
+    <script src="backgroound.js"></script>
 </body>
 </html>
